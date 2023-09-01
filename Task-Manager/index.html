@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Task Manager</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search tasks...">
+            <button >Search</button>
+        </div>
+    </header>
+    <div class="container">
+
+        <form class="task-form" onsubmit="addTask(); return false;">
+
+            <label for="taskId">Task ID:</label>
+            <input type="number" min="0" id="taskId" name="taskId">
+
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" name="taskName">
+
+            <label for="taskStartDate">Start Date:</label>
+            <input type="date" id="taskStartDate" name="taskStartDate">
+
+            <label for="taskEndDate">End Date:</label>
+            <input type="date" id="taskEndDate" name="taskEndDate">
+
+            <label for="taskStatus">Status:</label>
+
+            <select id="taskStatus" name="taskStatus">
+
+                <option value="none" selected disabled hidden>Select Status</option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Due-Passed">Due-Passed</option>
+                <option value="Canceled">Canceled</option>
+
+            </select>
+
+            <button type="submit">Add Task</button>
+
+        </form>
+
+        <div class="task-list">
+            <h2>Task List</h2>
+            <ul id="taskList">
+            </ul>
+        </div>
+
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+    
+
+                <label for="editTaskName">Task Name:</label>
+                <input type="text" id="editTaskName">
+                <label for="editTaskStartDate">Start Date:</label>
+                <input type="datetime-local" id="editTaskStartDate">
+                <label for="editTaskEndDate">End Date:</label>
+                <input type="datetime-local" id="editTaskEndDate">
+                <label for="editTaskStatus">Status:</label>
+                <select id="editTaskStatus">
+                    <option value="none" selected disabled hidden>Select Status</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Due-Passed">Due-Passed</option>
+                    <option value="In-Progress">In-Progress</option>
+                    <option value="Canceled">Canceled</option>
+                </select>
+                <button onclick="saveEditedTask()">Save</button>
+                <button onclick="closeEditedTask()">Close</button>
+            </div>
+        </div>
+
+        <div id="subtaskModal" class="modal">
+            <div class="modal-content">
+               
+                <label for="subTaskName">Subtask Name:</label>
+                <input type="text" id="subTaskName" placeholder="Enter subtask name">
+                <label for="subStartDate">Start Date:</label>
+                <input type="datetime-local" id="subStartDate">
+                <label for="subEndDate">End Date:</label>
+                <input type="datetime-local" id="subEndDate">
+                <label for="subStatus">Status:</label>
+                <select id="subStatus">
+                    <option value="none" selected disabled hidden>Select Status</option>
+                    <option value="In-Progress">In-Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Canceled">Canceled</option>
+                </select>
+                <button onclick="addSubTask()">Add Subtask</button>
+                <button onclick="closeSubtaskModal()">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
